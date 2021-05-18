@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Montez&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+
+.wrapper {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+.wrapper .nav-item {
+  font-family: "Montez", cursive;
+  color: black;
+}
+
+/* .wrapper #nav-input {
+  width: 300px;
+  padding: 8px;
+  color: #fafafa;
+  border: 1px solid #3b4445;
+  border-radius: 10px;
+  background: #3b4445;
+  outline: none;
+}
+
+::placeholder {
+  color: grey;
+  font-size: 1.1em;
+} */
+
+.nav-links a {
+  /* margin-right: 30px; */
+  color: black;
+  text-decoration: none;
+  font-size: 0.84em;
+  font-weight: 500;
+  transition: 0.1s ease;
+  transition-delay: 0.2s;
+  position: relative;
+}
+
+.nav-links .current::before {
+  content: "";
+  position: absolute;
+  bottom: -0.7rem;
+  left: 50%;
+  width: 4.5px;
+  height: 4.5px;
+  background-color: #f4511e;
+  border-radius: 50%;
+}
+
+.wrapper .nav-wrapper {
+  border-bottom: 1px transparent;
+  box-shadow: 0 0 25px rgba(44, 130, 206, 0.2);
+}
+
+.wrapper .button {
+  transition: 0.3s;
+}
+
+.wrapper .button:hover {
+  transform: translateY(-0.25rem);
+}
+
+#home {
+  position: relative;
+  overflow: hidden;
+}
+
+#home .base {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+#home .base-b {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+}
+
+.home-pic .home-img {
+  position: absolute;
+  top: 4.5rem;
+  right: 2rem;
+  transform: rotate(-32deg);
+}
+
+#heading {
+  position: relative;
+}
+
+.column .card {
+  background-color: #ebe8e5;
+}
+/* #e7dfdf */
+
+.column .card:hover {
+  transition: 0.2s ease-in;
+  transform: translateY(-0.3rem);
+}
+
+@media screen and (max-width: 1400px) {
+  #heading::before {
+    content: "";
+    position: absolute;
+    top: -0.5rem;
+    left: 47.4%;
+    width: 60px;
+    height: 3px;
+    background-color: black;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #heading::before {
+    content: "";
+    position: absolute;
+    top: -0.5rem;
+    left: 40%;
+    width: 60px;
+    height: 3px;
+    background-color: black;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .columns #cardd {
+    padding: 0.5rem;
+  }
+}
+
+.column .card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-overlay {
+  position: absolute;
+  left: 0;
+  bottom: -109%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #9da3a3b6;
+  transition: 0.3s;
+}
+
+.card:hover .card-overlay {
+  bottom: 0;
+}
+
+.sub {
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: black;
+}
+
+.footer #link a {
+  color: #576061;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-weight: 500;
+}
