@@ -38,8 +38,8 @@ npm start
 Yet to be completed.
 
 Upon completion
-Frontend will be able to consume the backend API,
-Additional features added to the backend, on the cart model and app.js
+Frontend will be able to consume the backend API, The starter folder contains the fronted files.
+Additional features added to the backend, on the cart model and app.js.
 
 ## Other
 
