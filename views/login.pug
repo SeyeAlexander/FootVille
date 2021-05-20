@@ -1,0 +1,16 @@
+extends base
+
+block content
+
+  .section
+    .container
+      .l-form
+        form.form(action)
+          h1.form__title.title.is-size-5.pb-4 Login
+          .form__div
+            input.form__input(type="text", placeholder=" ")
+            label.form__label(for) Username
+          .form__div
+            input.form__input(type="password", placeholder=" ")
+            label.form__label(for) Password
+          input.form__button(type="submit", value="Sign In")

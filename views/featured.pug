@@ -1,0 +1,126 @@
+extends base
+
+block content 
+
+  .section
+  .container
+    .columns.is-vcentered.is-centered.is-multiline
+      .column.is-4
+        p.is-size-6.pb-2 new in
+        h1.is-size-3-mobile.is-size-1-desktop.title YEEZY BOOST
+        h1.is-size-5-mobile.is-size-4-desktop.subtitle SPLY 350
+        p.is-size-6.pb-2 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        a.button.is-primary(href="shop.html") Explore now
+      .column.is-1
+      #home.column.is-4.has-text-centered
+        .base.has-background-dark.is-hidden-mobile
+        .is-flex.is-justify-content-center.is-align-content-center
+          .base-b.has-background-dark
+          .home-pic
+            img.home-img(src="assets/imghome.png", alt="yeezy-sply-350")
+
+  //  Featured 
+  .section
+    .container.pt-6
+      p#heading.has-text-centered.title.pb-4.mt-6.pt-2.is-size-4 FEATURED
+      .columns.is-centered.is-multiline.is-mobile
+        .column.is-12-mobile.is-4-tablet
+          .card.py-6.px-5
+            #cardd.card-image.mt-6.mb-6.has-text-centered
+              img.pt-2(src="assets/new1.png", alt="product")
+            p.title.is-size-4tablet.is-size-5-mobile MENS SHOES
+            p.subtitle From £89.95
+            p.pb-6
+              a.title.is-size-6(href="shop.html") View in Collection
+        .column.is-12-mobile.is-8-tablet
+          .columns.is-multiline.is-mobile
+            .column.is-6.has-text-centered
+              .card.py-6
+                #cardd.card-image.has-text-centered
+                  img(src="assets/new2.png", alt="product")
+                  p.has-text-dark.title.is-size-7 Yeezy Boost Sply-350
+                .card-overlay
+                  a.button.is-primary(href="product.html") View
+            .column.is-6
+              .card.py-6
+                #cardd.card-image.has-text-centered
+                  img(src="assets/new3.png", alt="product")
+                  p.has-text-dark.title.is-size-7 Yeezy 350
+                .card-overlay
+                  a.button.is-primary(href="product.html") View
+            .column.is-6
+              .card.py-6.has-text-centered
+                #cardd.card-image.has-text-centered
+                  img(src="assets/new4.png", alt="product")
+                  p.has-text-dark.title.is-size-7 Yeezy Sply-350
+                .card-overlay
+                  a.button.is-primary(href="product.html") View
+            .column.is-6
+              .card.py-6
+                #cardd.card-image.has-text-centered
+                  img(src="assets/new5.png", alt="product")
+                  p.has-text-dark.title.is-size-7 Yeezy Boost 350
+                .card-overlay
+                  a.button.is-primary(href="product.html") View
+  //  Discount banner 
+  .section
+    .container.is-flex.is-justify-content-center.is-align-items-center
+      .discount.has-text-centered.is-flex.is-justify-content-center.is-align-items-center
+        div
+          p.title.is-size-1.mb-4 50% OFF
+          p.subtitle.is-size-6 On All Boosts
+          p.subtitle.is-size-4 Avilable at all our stores
+          a.button.is-primary(href="shop.html") Shop Now
+        div
+          img.pt-2(src="assets/offert.png", alt="product", style="max-height: 20rem")
+  //  Feature-Women 
+  .section
+    .container
+      p#heading.has-text-centered.title.pb-4.mt-6.pt-2.is-size-4 WOMEN
+      .columns.is-centered
+        .column.is-3
+          .card.py-6.px-5.mx-4
+            #cardd.card-image.has-text-centered
+              img(src="assets/women1.png", alt="product")
+              p.title.is-size-6.mb-2 Nike Mateo-400
+              p.title.is-size-7.pb-2 £98.99
+              p
+                a.title.is-size-6.has-text-dark(href="women.html") Shop
+        .column.is-3
+          .card.py-6.px-5.mx-4
+            #cardd.card-image.has-text-centered
+              img(src="assets/women2.png", alt="product")
+              p.title.is-size-6.mb-2 Nike Thea 2
+              p.title.is-size-7.pb-2 £90.99
+              p
+                a.title.is-size-6.has-text-dark(href="women.html") Shop
+        .column.is-3
+          .card.py-6.px-5.mx-4
+            #cardd.card-image.has-text-centered
+              img(src="assets/women3.png", alt="product")
+              p.title.is-size-6.mb-2 Nike Cort
+              p.title.is-size-7.pb-2 £122.95
+              p
+                a.title.is-size-6.has-text-dark(href="women.html") Shop
+  //  Subscription banner 
+  .section
+    .container
+      .sub.py-6
+        .columns.is-centered.is-vcentered
+          .column.is-5
+            .has-text-centered
+              p.title.is-size-4.pb-2.is-hidden-mobile.has-text-white.
+                
+                SUBSCRIBE AND GET
+                
+              p.subtitle.is-size-6.is-hidden-mobile.has-text-white.pb-6.
+                
+                Up to date deals
+                
+              p.title.is-size-6.pb-4.has-text-white.
+                
+                Signup to get 10% discount on all products
+                
+          .column.is-2.has-text-centered
+            div
+              a.button.is-primary(href="signup.html") Signup
