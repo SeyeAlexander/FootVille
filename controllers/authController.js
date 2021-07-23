@@ -9,7 +9,7 @@ const AppError = require('../utils/appError')
 const Email = require('../utils/email')
 
 const signToken = (id) => {
-    return token = jwt.sign({ id }, config.get('JWTSecret'), { expiresIn: config.get('JWTExpires')})
+    return jwt.sign({ id }, config.get('JWTSecret'), { expiresIn: config.get('JWTExpires')})
 }
 
 const createToken = (user, statusCode, res) => {
@@ -45,13 +45,13 @@ const login = catchAsync(async (req, res, next) => {
     const { email, password } = req.body
 
     if (!email || !password ) {
-        return next(new AppError('Please provide email and password', 404))
+        next(new AppError('Please provide email and password', 404))
     }
 
     const user = await User.findOne({ email }).select('+password')
 
     if (!user || !await user.comparePassword(password, user.password)) {
-        return next(new AppError('Incorrect email or password', 401))
+        next(new AppError('Incorrect email or password', 401))
     }
 
     createToken(user, 201, res)
@@ -62,9 +62,24 @@ const logout = (req, res,) => {
         expires: new Date(Date.now() + 1 * 1000),
         httpOnly: true
     })
-    res.status(200).json({ status: 'success'})
+    res.status(200).json({ status: 'successfully logged out'})
 }
 
+const changePassword = catchAsync(async (req, res, next) => {
+    const user = await User.findById(req.user.id).select('+password')
+
+    if (!(await user.comparePassword(req.body.currentPassword, user.password))) {
+        return next(new AppError('Password incorrect', 401))
+    }
+
+    user.password = req.body.password
+    user.passwordConfirm = req.body.passwordConfirm
+    await user.save()
+
+    createToken(user, 200, res)
+})
+
+// Re-check Mailtrap, checkout Sendgrid 
 const forgotPassword = catchAsync(async (req, res, next) => {
     const { email } = req.body
     const user = await User.findOne({ email })
@@ -105,18 +120,4 @@ const resetPassword = catchAsync(async (req, res, next) => {
     createToken(user, 201, res)
 })
 
-const updatePassword = catchAsync(async (req, res, next) => {
-    const user = await User.findById(req.user.id).select('+password')
-
-    if (!(await user.comparePassword(req.body.currentPassword, user.password))) {
-        return next(new AppError('Password incorrect', 401))
-    }
-
-    user.password = req.body.password
-    user.passwordConfirm = req.body.passwordConfirm
-    await user.save()
-
-    createToken(user, 200, res)
-})
-
-module.exports = { signup, login, logout, forgotPassword, resetPassword, updatePassword }
+module.exports = { signup, login, logout, changePassword, forgotPassword, resetPassword }

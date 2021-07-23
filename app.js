@@ -11,8 +11,7 @@ const compression = require('compression')
 
 const userRoutes = require('./routes/userRoutes')
 const stockRoutes = require('./routes/stockRoutes')
-const cartRoutes = require('./routes/cartRoutes')
-// const viewRoutes = require('./routes/viewRoutes')
+const viewRoutes = require('./routes/viewRoutes')
 
 const AppError = require('./utils/appError')
 const globalErrorHandler = require('./middleware/errorMiddleware')
@@ -46,17 +45,17 @@ app.use(mongoSanitize())
 app.use(xss())
 app.use(hpp({
     whitelist: [
-        'newPrice',
+        'price',
+        'discount',
         'sizes'
     ]
 }))
 
 app.use(compression())
 
-// app.use('/', viewRoutes)
+app.use('/', viewRoutes)
 app.use('/api/v1/users', userRoutes)
-app.use('/api/v1/stocks', stockRoutes) 
-app.use('/api/v1/cart', cartRoutes)
+app.use('/api/v1/stocks', stockRoutes)
 
 app.use((req, res, next) => {
     next(new AppError(`cannot find ${ req.originalUrl } on this server`, 404))
@@ -65,4 +64,3 @@ app.use((req, res, next) => {
 app.use(globalErrorHandler)
 
 module.exports = app
-

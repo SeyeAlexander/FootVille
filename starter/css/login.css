@@ -11,124 +11,6 @@
   color: black;
 }
 
-/*===== GOOGLE FONTS =====*/
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-/*===== VARIABLES CSS =====*/
-:root {
-  /*===== Colores =====*/
-  --first-color: #1a73e8;
-  --input-color: #80868b;
-  --border-color: #dadce0;
-
-  /*===== Fuente y tipografia =====*/
-  --body-font: "Roboto", sans-serif;
-  --normal-font-size: 1rem;
-  --small-font-size: 0.75rem;
-}
-
-/*===== BASE =====*/
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-}
-h1 {
-  margin: 0;
-}
-
-/*===== FORM =====*/
-.l-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* height: 100vh; */
-}
-.form {
-  width: 360px;
-  padding: 4rem 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
-}
-.form__title {
-  font-weight: 400;
-  margin-bottom: 3rem;
-}
-.form__div {
-  position: relative;
-  height: 48px;
-  margin-bottom: 1.5rem;
-}
-.form__input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: var(--normal-font-size);
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  outline: none;
-  padding: 1rem;
-  background: none;
-  z-index: 1;
-}
-.form__label {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  padding: 0 0.25rem;
-  background-color: #fff;
-  color: var(--input-color);
-  font-size: var(--normal-font-size);
-  transition: 0.3s;
-}
-.form__button {
-  display: block;
-  margin-left: auto;
-  padding: 0.75rem 2rem;
-  outline: none;
-  border: none;
-  background-color: var(--first-color);
-  color: #fff;
-  font-size: var(--normal-font-size);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.form__button:hover {
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
-}
-
-/*Input focus move up label*/
-.form__input:focus + .form__label {
-  top: -0.5rem;
-  left: 0.8rem;
-  color: var(--first-color);
-  font-size: var(--small-font-size);
-  font-weight: 500;
-  z-index: 10;
-}
-
-/*Input focus sticky top label*/
-.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
-  top: -0.5rem;
-  left: 0.8rem;
-  font-size: var(--small-font-size);
-  font-weight: 500;
-  z-index: 10;
-}
-
-/*Input focus*/
-.form__input:focus {
-  border: 1.5px solid var(--first-color);
-}
-
 .nav-links a {
   /* margin-right: 30px; */
   color: black;
@@ -153,5 +35,87 @@ h1 {
 
 .wrapper .nav-wrapper {
   border-bottom: 1px transparent;
-  box-shadow: 0 0 25px rgba(44, 130, 206, 0.2);
+  box-shadow: 0 0 15px rgba(44, 130, 206, 0.2);
+}
+
+/*===== FORM =====*/
+.form {
+  width: 360px;
+  padding: 4rem 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 5px 10px rgba(92, 99, 105, 0.2);
+}
+
+.f-group {
+  position: relative;
+  height: 48px;
+  margin-bottom: 1.5rem;
+}
+
+.f-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  border: 1px solid #dadce0;
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+}
+
+.f-label {
+  position: absolute;
+  left: 1rem;
+  top: 0.8rem;
+  padding: 0 0.25rem;
+  background-color: #fff;
+  color: #80868b;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+/*Input focus move up label*/
+.f-input:focus + .f-label {
+  top: -0.5rem;
+  left: 0.8rem;
+  color: #3273dc;
+  font-size: 0.75rem;
+  font-weight: 500;
+  z-index: 10;
+}
+
+/*Input focus sticky top label*/
+.f-input:not(:placeholder-shown).f-input:not(:focus) + .f-label {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  z-index: 10;
+}
+
+/*Input focus*/
+.f-input:focus {
+  border: 1.5px solid #3273dc;
+}
+
+.f-button {
+  display: block;
+  margin-left: auto;
+  padding: 0.75rem 2rem;
+  outline: none;
+  border: none;
+  background-color: #3273dc;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.f-button:hover {
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.15);
 }

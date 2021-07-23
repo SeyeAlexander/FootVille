@@ -34,7 +34,7 @@
 
 .wrapper .nav-wrapper {
   border-bottom: 1px transparent;
-  box-shadow: 0 0 25px rgba(44, 130, 206, 0.2);
+  box-shadow: 0 0 15px rgba(44, 130, 206, 0.2);
 }
 
 #pick p {

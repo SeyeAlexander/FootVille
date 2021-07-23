@@ -34,7 +34,7 @@
 
 .wrapper .nav-wrapper {
   border-bottom: 1px transparent;
-  box-shadow: 0 0 25px rgba(44, 130, 206, 0.2);
+  box-shadow: 0 0 15px rgba(44, 130, 206, 0.2);
 }
 
 #pick p {
@@ -48,4 +48,11 @@
 
 #pick #size {
   border-radius: 3px;
+}
+
+.footer #link a {
+  color: #576061;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-weight: 500;
 }

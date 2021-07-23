@@ -35,50 +35,8 @@
 
 .wrapper .nav-wrapper {
   border-bottom: 1px transparent;
-  box-shadow: 0 0 25px rgba(44, 130, 206, 0.2);
+  box-shadow: 0 0 15px rgba(44, 130, 206, 0.2);
 }
-
-/* .field {
-  position: relative;
-  z-index: 1;
-}
-
-#signup .input {
-  z-index: 1;
-  background: none;
-  outline: none;
-}
-
-::placeholder {
-  position: absolute;
-  top: -0.5rem;
-  left: 0.8rem;
-  padding: 0 0.25rem;
-  background-color: #fff;
-  color: #80868b;
-  font-size: 1rem;
-  transition: 0.3s;
-} */
-
-/* Input focus move up label */
-/* ::placeholder + .input:focus {
-  position: absolute;
-  top: -2rem;
-  left: 0.8rem;
-  color: #1a73e8;
-  font-size: 0.75rem;
-  font-weight: 500;
-  z-index: 10;
-} */
-
-/*Input focus sticky top label*/
-/* .input:not(:placeholder-shown).input:not(:focus) + ::placeholder {
-  top: -0.5rem;
-  left: 0.8rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  z-index: 10;
-} */
 
 .wrapper .button {
   transition: 0.3s;

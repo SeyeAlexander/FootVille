@@ -13,8 +13,8 @@ block content
         span.is-size-3.pl-2 footville
     .nav-links.is-hidden-mobile
       a.nav-link.mr-5(href="/") Featured
-      a.nav-link.current.mr-5(href="#title") Shop
-      a.nav-link.mr-5(href="/women") Women
+      a.nav-link.mr-5(href="/shop") Shop
+      a.nav-link.mr-5.current(href="#title") Women
       a.nav-link.mr-5(href="/signup") Signup
       a.nav-link.mr-5(href="/login") Login
       a
@@ -25,85 +25,45 @@ block content
     nav.breadcrumb.has-arrow-separator
       ul.container.is-size-7
         li
-          a.has-text-primary(href="#title") Shop
+          a.has-text-primary(href="#title") Women
         li.is-active
           a.has-text-grey All
 
-  //  Products page 
+  //  Products page (women) 
   .section
     .container
       h3#title.subtitle.is-size-4-tablet.is-size-5-mobile.pb-4.pt-4(style="color: #626b70").
         
-        Discover the best kicks
+        Offering you the best female kicks
         
-      .columns.mt-5.is-multiline.is-mobile
+      .columns.mt-5.is-multiline.is-variable.is-mobile
         .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
           .card
             #cardd.card-image.has-text-centered
-              img(src="/img/new2.png", alt="product")
+              img(src="/img/women1.png", alt="product")
             .card-content
               .is-size-6 £98.99
-              .title.is-size-6 Yeezy Boost Sply-350
+              .title.is-size-6 Nike Mateo-400
             footer.card-footer
               p.card-footer-item
                 a.has-text-primary-dark.is-size-6.title(href="/product") View
         .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
           .card
             #cardd.card-image.has-text-centered
-              img(src="/img/new4.png", alt="product")
-            .card-content
-              .is-size-6 £100.99
-              .title.is-size-6 Yeezy Sply-350
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/new3.png", alt="product")
-            .card-content
-              .is-size-6 £109.99
-              .title.is-size-6 Yezzy 350
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/featured3.png", alt="product")
-            .card-content
-              .is-size-6 £122.99
-              .title.is-size-6 Nike Jordan 3
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/new5.png", alt="product")
-            .card-content
-              .is-size-6 £10.95
-              .title.is-size-6 Yeezy Boost 350
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
               img(src="/img/women2.png", alt="product")
             .card-content
-              .is-size-6 £9.95
-              .title.is-size-6 Docker Light
+              .is-size-6 £100.95
+              .title.is-size-6 Nike Track 2
             footer.card-footer
               p.card-footer-item
                 a.has-text-primary-dark.is-size-6.title(href="#") View
         .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
           .card
             #cardd.card-image.has-text-centered
-              img(src="/img/featured2.png", alt="product")
+              img(src="/img/women3.png", alt="product")
             .card-content
-              .is-size-6 £10.95
-              .title.is-size-6 Coffe Crush
+              .is-size-6 £90.99
+              .title.is-size-6 Nike Thea 2
             footer.card-footer
               p.card-footer-item
                 a.has-text-primary-dark.is-size-6.title(href="#") View
@@ -112,8 +72,38 @@ block content
             #cardd.card-image.has-text-centered
               img(src="/img/women4.png", alt="product")
             .card-content
-              .is-size-6 £9.95
-              .title.is-size-6 Docker Light
+              .is-size-6 £122.95
+              .title.is-size-6 Nike Cort
+            footer.card-footer
+              p.card-footer-item
+                a.has-text-primary-dark.is-size-6.title(href="#") View
+        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
+          .card
+            #cardd.card-image.has-text-centered
+              img(src="/img/new4.png", alt="product")
+            .card-content
+              .is-size-6 £100.95
+              .title.is-size-6 Yeezy Sply-350
+            footer.card-footer
+              p.card-footer-item
+                a.has-text-primary-dark.is-size-6.title(href="#") View
+        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
+          .card
+            #cardd.card-image.has-text-centered
+              img(src="/img/new5.png", alt="product")
+            .card-content
+              .is-size-6 £90.99
+              .title.is-size-6 Yeezy Boost 350
+            footer.card-footer
+              p.card-footer-item
+                a.has-text-primary-dark.is-size-6.title(href="#") View
+        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
+          .card
+            #cardd.card-image.has-text-centered
+              img(src="/img/new3.png", alt="product")
+            .card-content
+              .is-size-6 £10.95
+              .title.is-size-6 Yeezy 350
             footer.card-footer
               p.card-footer-item
                 a.has-text-primary-dark.is-size-6.title(href="#") View

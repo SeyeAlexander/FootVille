@@ -12,7 +12,8 @@ const userSchema = new Schema({
 
     username: {
         type: String,
-        required: [true, 'Please add a username']
+        required: [true, 'Please add a username'],
+        unique: true
     },
 
     email: {
@@ -22,6 +23,26 @@ const userSchema = new Schema({
         lowercase: true,
         validate: [validator.isEmail, 'please enter a valid email']
     },
+
+    shippingAddress: {
+        type: String,
+        required: [true, 'Please provide us your shipping address']
+    },
+
+    postalCode: {
+        type: Number,
+        required: [true, 'Please provide us your postal code']
+    },
+
+    // avatar: {
+    //     type: String,
+    // },
+
+    // rank: {
+    //     type: String,
+    //     enum: ['Beginner', 'Executive']
+    //     default: 'Beginner'   
+    // },
 
     role: {
         type: String,
@@ -46,9 +67,11 @@ const userSchema = new Schema({
             message: 'Passwords are not the same'
         }
     },
+
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
+
     active: {
         type: Boolean,
         default: true,
@@ -73,7 +96,7 @@ userSchema.pre('save', function(next){
 })
 
 userSchema.pre(/^find/, function(next){
-    this.find({ active : { $ne: false} })
+    this.find({ active: { $ne: false }})
     next()
 })
 

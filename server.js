@@ -18,6 +18,7 @@ if (app.get('env') === 'development') {
 
 if (app.get('env') === 'production') {
   dbURI = config.get('database').replace("<PASSWORD>", config.get("DB_PASSWORD"))
+  // dbURI = config.get('database')
 
   mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true, useFindAndModify: false })
     .then(console.log('connected to database..'))

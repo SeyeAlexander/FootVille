@@ -14,16 +14,20 @@
       crossorigin="anonymous"
     />
     <script defer src="index.js"></script>
-    <!-- <script defer src="js/all.js"></script> -->
   </head>
 
   <body>
     <div class="wrapper">
       <!-- Navigation -->
       <div class="nav-wrapper pr-6 pl-5 pt-5 is-flex is-justify-content-space-between">
-        <div class="nav-brand has-text-dark">
+        <div class="nav-brand">
           <a class="nav-item is-flex" href="index.html">
-            <img src="https://img.icons8.com/color/48/000000/nike.png" />
+            <img
+              class="is-hidden-tablet"
+              src="https://img.icons8.com/color/48/000000/nike.png"
+              width="25%"
+            />
+            <img class="is-hidden-mobile" src="https://img.icons8.com/color/48/000000/nike.png" />
             <span class="is-size-3 pl-2">footville</span>
           </a>
         </div>
@@ -34,7 +38,7 @@
           <a href="women.html" class="nav-link mr-5">Women</a>
           <!-- <a href="product.html" class="nav-link mr-5">New</a> -->
           <a href="signup.html" class="nav-link mr-5">Signup</a>
-          <a href="#title" class="nav-link mr-5 current">Login</a>
+          <a href="#" class="nav-link mr-5 current">Login</a>
           <a><i class="fas fa-shopping-bag"></i></a>
         </div>
       </div>
@@ -54,21 +58,21 @@
       <!-- login -->
       <div class="section">
         <div class="container">
-          <div class="l-form">
-            <form action="" class="form">
-              <h1 class="form__title title is-size-5 pb-4">Login</h1>
+          <div class="is-flex is-justify-content-center is-align-items-center">
+            <form class="form">
+              <h1 class="title is-size-5 pb-4">Login</h1>
 
-              <div class="form__div">
-                <input type="text" class="form__input" placeholder=" " />
-                <label for="" class="form__label">Username</label>
+              <div class="f-group">
+                <input type="text" class="f-input" placeholder=" " />
+                <label class="f-label">Username</label>
               </div>
 
-              <div class="form__div">
-                <input type="password" class="form__input" placeholder=" " />
-                <label for="" class="form__label">Password</label>
+              <div class="f-group">
+                <input type="password" class="f-input" placeholder=" " />
+                <label class="f-label">Password</label>
               </div>
 
-              <input type="submit" class="form__button" value="Sign In" />
+              <input type="submit" class="f-button" value="Log In" />
             </form>
           </div>
         </div>

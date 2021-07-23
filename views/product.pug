@@ -1,0 +1,67 @@
+extends base
+
+block append head
+  link(rel="stylesheet", href="/css/product.css")
+
+block content
+  //  Navigation 
+  .nav-wrapper.pr-6.pl-5.pt-5.is-flex.is-justify-content-space-between
+    .nav-brand
+      a.nav-item.is-flex(href="/")
+        img.is-hidden-tablet(src="https://img.icons8.com/color/48/000000/nike.png", width="25%")
+        img.is-hidden-mobile(src="https://img.icons8.com/color/48/000000/nike.png")
+        span.is-size-3.pl-2 footville
+    .nav-links.is-hidden-mobile
+      a.nav-link.mr-5(href="/") Featured
+      a.nav-link.current.mr-5(href="/shop") Shop
+      a.nav-link.mr-5(href="/women") Women
+      a.nav-link.mr-5(href="/signup") Signup
+      a.nav-link.mr-5(href="/login") Login
+      a
+        i.fas.fa-shopping-bag
+        
+  // Breadcrumb
+  .section.pt-6.pb-0
+    nav.breadcrumb.has-arrow-separator
+      ul.container.is-size-7
+        li
+          a.has-text-primary(href="/shop") Shop
+        li.is-active
+          a.has-text-grey Yeezy, Sply 350
+
+  //  Product page 
+  .section
+    .container
+      .columns.is-vcentered.is-centered
+        .column.is-4.has-text-centered
+          //  <div class="base-b has-background-dark"></div> 
+          .home-pic
+            img.home-img(src="/img/imghome.png", alt="yeezy-sply-350")
+        .column.is-1
+        .column.is-4
+          p.is-size-6.pb-3.subtitle Nike
+          p.is-size-3-mobile.is-size-2-desktop.title YEEZY BOOST
+          p.is-size-5-mobile.is-size-4-desktop.subtitle SPLY 350
+          p.is-size-7.pb-5.
+            
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus nam molestias mollitia nemo nostrum at!
+            
+          #pick.pb-6.is-flex
+            .pr-6.mr-6
+              p Size
+              .is-flex.is-size-7.title.pt-2
+                span#size.px-2.py-1.mr-1.has-background-grey(data-target="dec-qty") 9
+                span#size.px-2.py-1.mr-1.has-background-white-ter(data-target="dec-qty") 9.5
+                span#size.px-2.py-1.mr-1.has-background-grey(data-target="dec-qty") 10
+                span#size.px-1.py-1.mr-1.has-background-white-ter(data-target="dec-qty") 10.5
+            div
+              p Quantity
+              #Qty.is-flex.is-size-6.title.py-1.my-1.has-background-black.has-text-white
+                span#dec.px-3(data-target="dec-qty") -
+                span#val.px-3 1
+                span#inc.px-3(data-target="inc-qty") +
+          .is-flex.is-justify-content-space-between
+            p.pr-4.is-size-3.subtitle £98.99
+            button.button.is-primary ADD TO CART
+          p.is-size-6
+            del was £102.95

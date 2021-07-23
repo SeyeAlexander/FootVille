@@ -26,13 +26,20 @@ const handleJWTExpiredError = () => new AppError('Token has expired! please log 
 
 const sendErrorDev = (err, req, res) => {
     if (req.originalUrl.startsWith('/api')) {
-        res.status(err.statusCode).json({
+        return res.status(err.statusCode).json({
             status: err.status,
-            error: err,
-            message: err.message,
-            stack: err.stack
+            message: err.message
         })
     }
+
+    // if (req.originalUrl.startsWith('/api')) {
+    //     return res.status(err.statusCode).json({
+    //         status: err.status,
+    //         error: err,
+    //         message: err.message,
+    //         stack: err.stack
+    //     })
+    // }
 
     return res.status(err.statusCode).render('error', { title: 'Error', msg: err.message })
 }
@@ -44,8 +51,7 @@ const sendErrorProd = (err, req, res) => {
                 status: err.status,
                 message: err.message
             })
-        }
-
+        }             
         // console.log('Error 💥', err)
         return res.status(500).json({
             status: 'error',

@@ -9,17 +9,17 @@ const stockSchema = new Schema(
       required: [true, 'stock must be named'],
       unique: true,
       trim: true,
-      maxlength: [25, 'stockname must not have above 25 characters']
+      maxlength: [25, 'stockname must not be above 25 characters']
     },
 
-    standardPrice: {
+    price: {
       type: Number,
       required: [true, 'a stock must have a price']
     },
 
-    newPrice: {
-      type: Number,
-      required: [true, 'a stock must have a price']
+
+    discount: {
+      type: Number
     },
 
     slug: String,
@@ -27,12 +27,14 @@ const stockSchema = new Schema(
     description: {
       type: String,
       trim: true,
-      required: [true, 'a stock must described']
+      required: [true, 'stock must be described'],
+      maxlength: [110, 'description should not be more than 110 characters']
     },
 
     maker: {
       type: String,
-      required: [true, 'a stock must have a maker']
+      required: [true, 'stock must have a maker'],
+      maxlength: [30, 'maker must be within 30 characters']
     },
 
     sizes: [
@@ -50,13 +52,14 @@ const stockSchema = new Schema(
     gender: {
       type: String,
       required: [true, 'gender must be specified'],
-      enum: ['female', 'male', 'unisex'],
-      default: 'unisex'
+      enum: ['u', 'f', 'k'], 
+      // Unisex, Female, kids
+      default: 'u'
     },
 
     photo: {
       type: String,
-      // required: [true, 'a stock must have a picture']
+      required: [true, 'a stock must have a picture']
     },
 
     createdAt: {
@@ -69,12 +72,6 @@ const stockSchema = new Schema(
     toObject: { virtuals: true }
   }
 )
-
-stockSchema.virtual('cartItems', {
-  ref: 'cartItem',
-  foreignField: 'stock',
-  localField: '_id'
-})
 
 stockSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });

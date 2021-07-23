@@ -1,23 +1,53 @@
 extends base
 
-block content 
+block append head
+  link(rel="stylesheet", href="/css/style.css")
 
+block content 
+  //  Navigation 
+  .nav-wrapper.pr-6.pl-5.pt-5.is-flex.is-justify-content-space-between
+    .nav-brand
+      a.nav-item.is-flex(href="/")
+        img.is-hidden-tablet(src="https://img.icons8.com/color/48/000000/nike.png", width="25%")
+        img.is-hidden-mobile(src="https://img.icons8.com/color/48/000000/nike.png")
+        span.is-size-3.pl-2 footville
+    .nav-links.is-hidden-mobile
+      a.nav-link.mr-5.current(href="#heading") Featured
+      a.nav-link.mr-5(href="/shop") Shop
+      a.nav-link.mr-5(href="/women") Women 
+      a.nav-link.mr-5(href="/signup") Signup
+      a.nav-link.mr-5(href="/login") Login
+      a
+        i.fas.fa-shopping-bag
+
+  // Breadcrumb
+  .section.pt-6.pb-0
+    nav.breadcrumb.has-arrow-separator
+      ul.container.is-size-7
+        li
+          a.has-text-primary(href="#heading") Featured
+        li
+          a.has-text-primary(href="/shop") All
+        li.is-active
+          a.has-text-grey Yeezy, Sply 350
+
+  //  Feature page 
   .section
-  .container
-    .columns.is-vcentered.is-centered.is-multiline
-      .column.is-4
-        p.is-size-6.pb-2 new in
-        h1.is-size-3-mobile.is-size-1-desktop.title YEEZY BOOST
-        h1.is-size-5-mobile.is-size-4-desktop.subtitle SPLY 350
-        p.is-size-6.pb-2 Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        a.button.is-primary(href="shop.html") Explore now
-      .column.is-1
-      #home.column.is-4.has-text-centered
-        .base.has-background-dark.is-hidden-mobile
-        .is-flex.is-justify-content-center.is-align-content-center
-          .base-b.has-background-dark
-          .home-pic
-            img.home-img(src="assets/imghome.png", alt="yeezy-sply-350")
+    .container
+      .columns.is-vcentered.is-centered.is-multiline
+        .column.is-4
+          p.is-size-6.pb-2 new in
+          h1.is-size-3-mobile.is-size-1-desktop.title YEEZY BOOST
+          h1.is-size-5-mobile.is-size-4-desktop.subtitle SPLY 350
+          p.is-size-6.pb-2 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          a.button.is-primary(href="/shop") Explore now
+        .column.is-1
+        #home.column.is-4.has-text-centered
+          .base.has-background-dark.is-hidden-mobile
+          .is-flex.is-justify-content-center.is-align-content-center
+            .base-b.has-background-dark
+            .home-pic
+              img.home-img(src="/img/imghome.png", alt="yeezy-sply-350")
 
   //  Featured 
   .section
@@ -27,41 +57,42 @@ block content
         .column.is-12-mobile.is-4-tablet
           .card.py-6.px-5
             #cardd.card-image.mt-6.mb-6.has-text-centered
-              img.pt-2(src="assets/new1.png", alt="product")
+              img.pt-2(src="/img/new1.png", alt="product")
             p.title.is-size-4tablet.is-size-5-mobile MENS SHOES
             p.subtitle From £89.95
             p.pb-6
-              a.title.is-size-6(href="shop.html") View in Collection
+              a.title.is-size-6(href="/shop") View in Collection
         .column.is-12-mobile.is-8-tablet
           .columns.is-multiline.is-mobile
             .column.is-6.has-text-centered
               .card.py-6
                 #cardd.card-image.has-text-centered
-                  img(src="assets/new2.png", alt="product")
+                  img(src="/img/new2.png", alt="product")
                   p.has-text-dark.title.is-size-7 Yeezy Boost Sply-350
                 .card-overlay
-                  a.button.is-primary(href="product.html") View
+                  a.button.is-primary(href="/product") View
             .column.is-6
               .card.py-6
                 #cardd.card-image.has-text-centered
-                  img(src="assets/new3.png", alt="product")
+                  img(src="/img/new3.png", alt="product")
                   p.has-text-dark.title.is-size-7 Yeezy 350
                 .card-overlay
-                  a.button.is-primary(href="product.html") View
+                  a.button.is-primary(href="/product") View
             .column.is-6
               .card.py-6.has-text-centered
                 #cardd.card-image.has-text-centered
-                  img(src="assets/new4.png", alt="product")
+                  img(src="/img/new4.png", alt="product")
                   p.has-text-dark.title.is-size-7 Yeezy Sply-350
                 .card-overlay
-                  a.button.is-primary(href="product.html") View
+                  a.button.is-primary(href="/product") View
             .column.is-6
               .card.py-6
                 #cardd.card-image.has-text-centered
-                  img(src="assets/new5.png", alt="product")
+                  img(src="/img/new5.png", alt="product")
                   p.has-text-dark.title.is-size-7 Yeezy Boost 350
                 .card-overlay
-                  a.button.is-primary(href="product.html") View
+                  a.button.is-primary(href="/product") View
+
   //  Discount banner 
   .section
     .container.is-flex.is-justify-content-center.is-align-items-center
@@ -70,9 +101,10 @@ block content
           p.title.is-size-1.mb-4 50% OFF
           p.subtitle.is-size-6 On All Boosts
           p.subtitle.is-size-4 Avilable at all our stores
-          a.button.is-primary(href="shop.html") Shop Now
+          a.button.is-primary(href="/shop") Shop Now
         div
-          img.pt-2(src="assets/offert.png", alt="product", style="max-height: 20rem")
+          img.pt-2(src="/img/offert.png", alt="product", style="max-height: 20rem")
+
   //  Feature-Women 
   .section
     .container
@@ -81,27 +113,28 @@ block content
         .column.is-3
           .card.py-6.px-5.mx-4
             #cardd.card-image.has-text-centered
-              img(src="assets/women1.png", alt="product")
+              img(src="/img/women1.png", alt="product")
               p.title.is-size-6.mb-2 Nike Mateo-400
               p.title.is-size-7.pb-2 £98.99
               p
-                a.title.is-size-6.has-text-dark(href="women.html") Shop
+                a.title.is-size-6.has-text-dark(href="/women") Shop
         .column.is-3
           .card.py-6.px-5.mx-4
             #cardd.card-image.has-text-centered
-              img(src="assets/women2.png", alt="product")
+              img(src="/img/women2.png", alt="product")
               p.title.is-size-6.mb-2 Nike Thea 2
               p.title.is-size-7.pb-2 £90.99
               p
-                a.title.is-size-6.has-text-dark(href="women.html") Shop
+                a.title.is-size-6.has-text-dark(href="/women") Shop
         .column.is-3
           .card.py-6.px-5.mx-4
             #cardd.card-image.has-text-centered
-              img(src="assets/women3.png", alt="product")
+              img(src="/img/women3.png", alt="product")
               p.title.is-size-6.mb-2 Nike Cort
               p.title.is-size-7.pb-2 £122.95
               p
-                a.title.is-size-6.has-text-dark(href="women.html") Shop
+                a.title.is-size-6.has-text-dark(href="/women") Shop
+
   //  Subscription banner 
   .section
     .container
@@ -123,4 +156,4 @@ block content
                 
           .column.is-2.has-text-centered
             div
-              a.button.is-primary(href="signup.html") Signup
+              a.button.is-primary(href="/signup") Signup

@@ -4,6 +4,10 @@ const AppError = require('../utils/appError')
 
 exports.createDoc = Model => 
     catchAsync(async (req, res, next) => {
+        if (req.file) req.body.photo = req.file.filename
+        
+        // if (req.file) console.log( req.file )
+
         const doc = await Model.create(req.body)
 
         res.status(201).json({
@@ -15,12 +19,7 @@ exports.createDoc = Model =>
 
 exports.getAllDocs = Model => 
     catchAsync(async (req, res) => {
-        //for nested get routes
-        let filter = {}
-        if (req.params.tourId) filter = { tour: req.params.tourId }
-        
-        // get all query
-        const features = new APIFeatures(Model.find(filter), req.query)
+        const features = new APIFeatures(Model.find(), req.query)
             .filter()
             .sort()
             .limitFields()
@@ -53,6 +52,8 @@ exports.getDoc = (Model, popOptions) =>
 
 exports.updateDoc = Model => 
     catchAsync(async (req, res, next) => {
+        if (req.file) req.body.photo = req.file.filename
+
         const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true

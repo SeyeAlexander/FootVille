@@ -15,7 +15,7 @@ const requireAuth = catchAsync(async (req, res, next) => {
     }
 
     if (!token) {
-        next(new AppError('You are not logged in, please log in to get access', 401))
+        return next(new AppError('You are not logged in, please log in to get access', 401))
     }
 
     const decoded = await promisify(jwt.verify)(token, config.get('JWTSecret')) 
@@ -23,11 +23,11 @@ const requireAuth = catchAsync(async (req, res, next) => {
     const currentUser = await User.findById(decoded.id)
 
     if (!currentUser) {
-        next(new AppError('User with this token no longer exists', 401))
+        return next(new AppError('User with this token no longer exists', 401))
     }
 
-    if(currentUser.changedPasswordAfter(decoded.iat)) {
-        next(new AppError('User recently changed password, please login again', 401))
+    if (currentUser.changedPasswordAfter(decoded.iat)) {
+        return next(new AppError('User recently changed password, please login again', 401))
     }
 
     req.user = currentUser
