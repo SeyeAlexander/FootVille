@@ -12,7 +12,6 @@
 }
 
 .nav-links a {
-  /* margin-right: 30px; */
   color: black;
   text-decoration: none;
   font-size: 0.84em;
@@ -58,6 +57,19 @@
   .columns #cardd {
     padding: 0.5rem;
   }
+}
+
+#pick p {
+  font-size: 0.83em;
+  font-weight: 510;
+}
+
+#pick #Qty {
+  border-radius: 5px;
+}
+
+#pick #size {
+  border-radius: 3px;
 }
 
 .footer #link a {

@@ -1,7 +1,7 @@
 const express = require('express')
 const { requireAuth, restrictTo } = require('../middleware/authMiddleware')
 const { signup, login, logout, changePassword, forgotPassword, resetPassword } = require('../controllers/authController')
-const { getMe, getAllUsers, getUser, updateMe, updateUser, deleteMe, deleteUser } = require('../controllers/userControllers')
+const { getMe, getAllUsers, getUser, updateMe, updateUser, deleteMe, deleteUser } = require('../controllers/userController')
 
 const router = express.Router()
 

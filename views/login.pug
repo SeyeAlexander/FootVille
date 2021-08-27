@@ -1,37 +1,14 @@
-title FootVille
-meta(charset="utf-8")
-meta(name="viewport", content="width=device-width,initial-scale=1")
-link(rel="stylesheet", href="/css/login.css")
-link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css")
-link(rel="icon", href="https://img.icons8.com/color/48/000000/nike.png")
-link(rel="stylesheet", href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css", integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p", crossorigin="anonymous")
-script(defer, src="/js/index.js")
+extends base
 
-.wrapper
+include _nav
+
+block append head
+  link(rel="stylesheet", href="/css/auth.css")
+  script(defer, src="/js/auth.js")
+
+block content
   //  Navigation 
-  .nav-wrapper.pr-6.pl-5.pt-5.is-flex.is-justify-content-space-between
-    .nav-brand
-      a.nav-item.is-flex(href="/")
-        img.is-hidden-tablet(src="https://img.icons8.com/color/48/000000/nike.png", width="25%")
-        img.is-hidden-mobile(src="https://img.icons8.com/color/48/000000/nike.png")
-        span.is-size-3.pl-2 footville
-    .nav-links.is-hidden-mobile
-      a.nav-link.mr-5(href="/") Featured
-      a.nav-link.mr-5(href="/shop") Shop
-      a.nav-link.mr-5(href="/women") Women 
-      a.nav-link.mr-5(href="/signup") Signup
-      a.nav-link.mr-5.current(href="#") Login
-      a
-        i.fas.fa-shopping-bag
-
-  // Breadcrumb
-  .section.pt-6.pb-0
-    nav.breadcrumb.has-arrow-separator
-      ul.container.is-size-7
-        li
-          a.has-text-primary(href="/") Home
-        li.is-active
-          a.has-text-grey Login
+  +nav('Login')
 
   // LoginForm
   .section
@@ -40,9 +17,9 @@ script(defer, src="/js/index.js")
         form.form
           h1.title.is-size-5.pb-4 Login
           .f-group
-            input.f-input(type="text", placeholder=" ")
-            label.f-label Username
+            input#email.f-input(type="text", placeholder=" ")
+            label.f-label Email
           .f-group
-            input.f-input(type="password", placeholder=" ")
+            input#password.f-input(type="password", placeholder=" ")
             label.f-label Password
           input.f-button(type="submit", value="Log In")

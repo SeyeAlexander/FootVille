@@ -1,0 +1,40 @@
+mixin nav(activeLink)
+  .nav-wrapper.pr-6.pl-5.pt-5.is-flex.is-justify-content-space-between
+    .nav-brand
+      a.nav-item.is-flex(href="/")
+        img.is-hidden-tablet(src="https://img.icons8.com/color/48/000000/nike.png", width="25%")
+        img.is-hidden-mobile(src="https://img.icons8.com/color/48/000000/nike.png")
+        span.is-size-3.pl-2 footville
+    .nav-links.is-hidden-mobile
+      a.nav-link.mr-5(class=`${activeLink == 'Featured' ? 'current' : ''}`)(href="/") Featured
+      a.nav-link.mr-5(class=`${activeLink == 'Shop' ? 'current' : ''}`)(href="/shop") Shop
+      a.nav-link.mr-5(class=`${activeLink == 'Women' ? 'current' : ''}`)(href="/women") Women 
+      a.nav-link.mr-5(class=`${activeLink == 'Signup' ? 'current' : ''}`)(href="/signup") Signup
+      a.nav-link.mr-5(class=`${activeLink == 'Login' ? 'current' : ''}`)(href="/login") Login
+      a
+        i.fas.fa-shopping-bag
+
+  - if (activeLink)
+    // Breadcrumb
+    .section.pt-6.pb-0
+      nav.breadcrumb.has-arrow-separator
+        ul.container.is-size-7
+          - if (activeLink === 'Featured')
+            li
+              a.has-text-primary(href="#heading") Featured
+            li
+              a.has-text-primary(href="/shop") All
+            li.is-active
+              a.has-text-grey Yeezy, Sply 350
+
+          - else if (activeLink === 'Shop' || 'Women')
+            li
+              a.has-text-primary(href="#title")= activeLink
+            li.is-active
+              a.has-text-grey All
+
+          - else if (activeLink === 'Login' || 'Signup')
+            li
+              a.has-text-primary(href="/") Home
+            li.is-active
+              a.has-text-grey= activeLink

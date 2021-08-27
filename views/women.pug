@@ -1,33 +1,13 @@
 extends base
 
+include _nav
+
 block append head
   link(rel="stylesheet", href="/css/shop.css")
 
 block content 
   //  Navigation 
-  .nav-wrapper.pr-6.pl-5.pt-5.is-flex.is-justify-content-space-between
-    .nav-brand
-      a.nav-item.is-flex(href="/")
-        img.is-hidden-tablet(src="https://img.icons8.com/color/48/000000/nike.png", width="25%")
-        img.is-hidden-mobile(src="https://img.icons8.com/color/48/000000/nike.png")
-        span.is-size-3.pl-2 footville
-    .nav-links.is-hidden-mobile
-      a.nav-link.mr-5(href="/") Featured
-      a.nav-link.mr-5(href="/shop") Shop
-      a.nav-link.mr-5.current(href="#title") Women
-      a.nav-link.mr-5(href="/signup") Signup
-      a.nav-link.mr-5(href="/login") Login
-      a
-        i.fas.fa-shopping-bag
-
-  // Breadcrumb
-  .section.pt-6.pb-0
-    nav.breadcrumb.has-arrow-separator
-      ul.container.is-size-7
-        li
-          a.has-text-primary(href="#title") Women
-        li.is-active
-          a.has-text-grey All
+  +nav('Women')
 
   //  Products page (women) 
   .section
@@ -37,73 +17,19 @@ block content
         Offering you the best female kicks
         
       .columns.mt-5.is-multiline.is-variable.is-mobile
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/women1.png", alt="product")
-            .card-content
-              .is-size-6 £98.99
-              .title.is-size-6 Nike Mateo-400
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="/product") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/women2.png", alt="product")
-            .card-content
-              .is-size-6 £100.95
-              .title.is-size-6 Nike Track 2
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/women3.png", alt="product")
-            .card-content
-              .is-size-6 £90.99
-              .title.is-size-6 Nike Thea 2
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/women4.png", alt="product")
-            .card-content
-              .is-size-6 £122.95
-              .title.is-size-6 Nike Cort
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/new4.png", alt="product")
-            .card-content
-              .is-size-6 £100.95
-              .title.is-size-6 Yeezy Sply-350
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/new5.png", alt="product")
-            .card-content
-              .is-size-6 £90.99
-              .title.is-size-6 Yeezy Boost 350
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
-        .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
-          .card
-            #cardd.card-image.has-text-centered
-              img(src="/img/new3.png", alt="product")
-            .card-content
-              .is-size-6 £10.95
-              .title.is-size-6 Yeezy 350
-            footer.card-footer
-              p.card-footer-item
-                a.has-text-primary-dark.is-size-6.title(href="#") View
+
+        each doc in docs 
+
+          if (doc.gender === 'f')
+            .column.is-6-mobile.is-4-tablet.is-3-desktop.pb-6
+              .card
+                #cardd.card-image.has-text-centered
+                  img(src=`/img/stock/${doc.photo}`, alt=`${doc.name}`)
+                .card-content
+                  .is-size-6= doc.discount
+                  .title.is-size-6= doc.name
+                footer.card-footer
+                  p.card-footer-item
+                    a.has-text-primary-dark.is-size-6.title(href=`/shoes/${doc.slug}`) View
+        
+  include _footer

@@ -17,7 +17,7 @@ exports.createDoc = Model =>
         
     })
 
-exports.getAllDocs = Model => 
+exports.getAllDocs = (Model, Page) => 
     catchAsync(async (req, res) => {
         const features = new APIFeatures(Model.find(), req.query)
             .filter()
@@ -27,27 +27,47 @@ exports.getAllDocs = Model =>
 
         // await overall query
         // const doc = await features.query.explain()
-        const doc = await features.query
+        const docs = await features.query
 
-        res.status(200).json({
-            status: 'success',
-            results: doc.length,
-            data: { doc }
-        })
+        if (req.originalUrl.startsWith('/api')) {
+            return res.status(200).json({
+                status: 'success',
+                results: docs.length,
+                data: { docs }
+            })
+        }
+        
+        if (Page) {
+            return res.status(200).render(Page, { docs, title: 'Kicks' })
+        }
     })
 
-exports.getDoc = (Model, popOptions) =>
+exports.getDoc = (Model, Page, popOptions) =>
     catchAsync(async (req, res, next) => {
-        let query = Model.findById(req.params.id)
-        if (popOptions) query = query.populate(popOptions)
-        const doc = await query
+        if (req.originalUrl.startsWith('/api')) {
+            let query = Model.findById(req.params.id)
+            if (popOptions) query = query.populate(popOptions)
+            const docc = await query
 
-        if(!doc) return next(new AppError(`cannot find document with this id`, 404))
+            if(!docc) return next(new AppError(`cannot find document with this id`, 404))
 
-        res.status(200).json({
-            status: 'success',
-            data: { doc }
-        })
+            return res.status(200).json({
+                status: 'success',
+                data: { docc }
+            })
+        }
+
+        if (Page) {
+            const doc = await Model.findOne({ slug: req.params.slug })
+
+            if (!doc) return next(new AppError(`cannot get this Product right now, please check out others`, 404))
+
+            res.status(200).render(Page, { 
+                doc,
+                title: `${doc.name}`
+            })
+        }
+        
     })
 
 exports.updateDoc = Model => 

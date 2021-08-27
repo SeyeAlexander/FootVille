@@ -1,35 +1,13 @@
 extends base
 
+include _nav
+
 block append head
   link(rel="stylesheet", href="/css/style.css")
 
 block content 
   //  Navigation 
-  .nav-wrapper.pr-6.pl-5.pt-5.is-flex.is-justify-content-space-between
-    .nav-brand
-      a.nav-item.is-flex(href="/")
-        img.is-hidden-tablet(src="https://img.icons8.com/color/48/000000/nike.png", width="25%")
-        img.is-hidden-mobile(src="https://img.icons8.com/color/48/000000/nike.png")
-        span.is-size-3.pl-2 footville
-    .nav-links.is-hidden-mobile
-      a.nav-link.mr-5.current(href="#heading") Featured
-      a.nav-link.mr-5(href="/shop") Shop
-      a.nav-link.mr-5(href="/women") Women 
-      a.nav-link.mr-5(href="/signup") Signup
-      a.nav-link.mr-5(href="/login") Login
-      a
-        i.fas.fa-shopping-bag
-
-  // Breadcrumb
-  .section.pt-6.pb-0
-    nav.breadcrumb.has-arrow-separator
-      ul.container.is-size-7
-        li
-          a.has-text-primary(href="#heading") Featured
-        li
-          a.has-text-primary(href="/shop") All
-        li.is-active
-          a.has-text-grey Yeezy, Sply 350
+  +nav('Featured')
 
   //  Feature page 
   .section
@@ -157,3 +135,5 @@ block content
           .column.is-2.has-text-centered
             div
               a.button.is-primary(href="/signup") Signup
+
+  include _footer

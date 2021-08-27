@@ -28,18 +28,11 @@ const sendErrorDev = (err, req, res) => {
     if (req.originalUrl.startsWith('/api')) {
         return res.status(err.statusCode).json({
             status: err.status,
-            message: err.message
+            message: err.message,
+            // error: err,
+            // stack: err.stack
         })
     }
-
-    // if (req.originalUrl.startsWith('/api')) {
-    //     return res.status(err.statusCode).json({
-    //         status: err.status,
-    //         error: err,
-    //         message: err.message,
-    //         stack: err.stack
-    //     })
-    // }
 
     return res.status(err.statusCode).render('error', { title: 'Error', msg: err.message })
 }
@@ -65,7 +58,6 @@ const sendErrorProd = (err, req, res) => {
         })
     }
 
-    // console.log('Error 💥', err)
     return res.status(err.statusCode).render('error', {
         title: 'Error', msg: 'something went wrong'
     })  

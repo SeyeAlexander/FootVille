@@ -1,7 +1,7 @@
 const User = require('../models/user')
 const catchAsync = require('../utils/catchAsync')
 const AppError = require('../utils/appError')
-const factory = require('../controllers/factoryHandler')
+const factory = require('./factory')
 
 // Find how users can choose avatars from already uploaded files (pictures)
 

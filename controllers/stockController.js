@@ -1,7 +1,7 @@
 const multer = require('multer')
 const Stock = require('../models/stock')
 const AppError = require('../utils/appError')
-const factory = require('./factoryHandler')
+const factory = require('./factory')
 
 const multerStorage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -27,14 +27,18 @@ const upload = multer({
     fileFilter: multerFilter
 })
 
-exports.uploadStockImage = upload.single('photo')
+const uploadStockImage = upload.single('photo')
 
-exports.createStock = factory.createDoc(Stock)
+const createStock = factory.createDoc(Stock)
 
-exports.getAllStocks = factory.getAllDocs(Stock)
+const getAllStock = factory.getAllDocs(Stock, 'shop')
 
-exports.getStock = factory.getDoc(Stock)
+const getAllStocksWomen = factory.getAllDocs(Stock, 'women')
 
-exports.updateStock = factory.updateDoc(Stock)
+const getStock = factory.getDoc(Stock, 'product')
 
-exports.deleteStock = factory.deleteDoc(Stock)
+const updateStock = factory.updateDoc(Stock)
+
+const deleteStock = factory.deleteDoc(Stock)
+
+module.exports = { uploadStockImage, createStock, getAllStock, getAllStocksWomen, getStock, updateStock, deleteStock }

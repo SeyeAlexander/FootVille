@@ -1,17 +1,20 @@
 const express = require('express')
 const { requireAuth, restrictTo } = require('../middleware/authMiddleware')
-const stockController = require('../controllers/stockControllers')
+const { 
+  uploadStockImage, createStock, getAllStock,
+  getStock, updateStock, deleteStock
+} = require('../controllers/stockController')
 
 const router = express.Router()
 
-router.get('/', stockController.getAllStocks)
+router.get('/', getAllStock)
 
-router.get('/:id', stockController.getStock)
+router.get('/:id', getStock)
 
-router.post('/', requireAuth, restrictTo('admin'), stockController.uploadStockImage, stockController.createStock)
+router.post('/', requireAuth, restrictTo('admin'), uploadStockImage, createStock)
 
-router.patch('/:id', requireAuth, restrictTo('admin'), stockController.uploadStockImage, stockController.updateStock)
+router.patch('/:id', requireAuth, restrictTo('admin'), uploadStockImage, updateStock)
 
-router.delete('/:id', requireAuth, restrictTo('admin'), stockController.deleteStock)
+router.delete('/:id', requireAuth, restrictTo('admin'), deleteStock)
 
 module.exports = router

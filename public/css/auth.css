@@ -46,6 +46,13 @@
   box-shadow: 0 5px 10px rgba(92, 99, 105, 0.2);
 }
 
+.sform {
+  width: 500px;
+  padding: 4rem 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 5px 10px rgba(92, 99, 105, 0.2);
+}
+
 .f-group {
   position: relative;
   height: 48px;
