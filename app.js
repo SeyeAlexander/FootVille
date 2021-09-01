@@ -9,9 +9,9 @@ const cookieParser = require('cookie-parser')
 const compression = require('compression')
 // const cors = require('cors')
 
-const userRoutes = require('./routes/userRoutes')
-const stockRoutes = require('./routes/stockRoutes')
-const viewRoutes = require('./routes/viewRoutes')
+const userRouter = require('./routes/userRoutes')
+const stockRouter = require('./routes/stockRoutes')
+const viewRouter = require('./routes/viewRoutes')
 
 const AppError = require('./utils/appError')
 const globalErrorHandler = require('./middleware/errorMiddleware')
@@ -53,9 +53,9 @@ app.use(hpp({
 
 app.use(compression())
 
-app.use('/', viewRoutes)
-app.use('/api/v1/users', userRoutes)
-app.use('/api/v1/stocks', stockRoutes)
+app.use('/', viewRouter)
+app.use('/api/v1/users', userRouter)
+app.use('/api/v1/stocks', stockRouter)
 
 app.use((req, res, next) => {
     next(new AppError(`cannot find ${ req.originalUrl } on this server`, 404))

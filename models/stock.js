@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const slugify = require('slugify')
+const validator = require('validator')
 const Schema = mongoose.Schema
 
 const stockSchema = new Schema(
@@ -17,11 +18,16 @@ const stockSchema = new Schema(
       required: [true, 'a stock must have a price']
     },
 
-
     discount: {
-      type: Number
+      type: Number,
+      validate: {
+        validator: function(val) {
+          return val < this.price
+        },
+        message: 'price discount ({VALUE}) must be less than original price'
+      }
     },
-
+    
     slug: String,
 
     description: {
@@ -72,6 +78,10 @@ const stockSchema = new Schema(
     toObject: { virtuals: true }
   }
 )
+
+stockSchema.index({ discount: 1 })
+stockSchema.index({ slug: 1 })
+stockSchema.index({ gender: 1 })
 
 stockSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });

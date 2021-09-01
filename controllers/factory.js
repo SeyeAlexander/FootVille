@@ -26,7 +26,7 @@ exports.getAllDocs = (Model, Page) =>
             .paginate()
 
         // await overall query
-        // const doc = await features.query.explain()
+        // use features.query.explain() to examine documents
         const docs = await features.query
 
         if (req.originalUrl.startsWith('/api')) {
