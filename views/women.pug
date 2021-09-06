@@ -26,7 +26,7 @@ block content
                 #cardd.card-image.has-text-centered
                   img(src=`/img/stock/${doc.photo}`, alt=`${doc.name}`)
                 .card-content
-                  .is-size-6= doc.discount
+                  .is-size-6= `£ ${doc.discount}`
                   .title.is-size-6= doc.name
                 footer.card-footer
                   p.card-footer-item
