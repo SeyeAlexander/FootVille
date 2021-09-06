@@ -34,6 +34,7 @@ const userSchema = new Schema({
         required: [true, 'Please provide us your postal code']
     },
 
+    // For avatar, set default, check on how to set different options as avatars also
     // avatar: {
     //     type: String,
     // },

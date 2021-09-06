@@ -6,7 +6,7 @@ exports.createDoc = Model =>
     catchAsync(async (req, res, next) => {
         if (req.file) req.body.photo = req.file.filename
         
-        // if (req.file) console.log( req.file )
+        // if (req.file) console.log( req.file ) | was used to test for the best way to name the files
 
         const doc = await Model.create(req.body)
 

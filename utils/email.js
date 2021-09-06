@@ -1,23 +1,23 @@
 const config = require('config')
 const nodemailer = require('nodemailer')
 const pug = require('pug')
-const htmlToText = require('html-to-text')
+const { htmlToText } = require('html-to-text')
 
 module.exports = class Email {
     constructor(user, url) {
+        this.from = `<${config.get('Email_From_Name')}, ${config.get('Email_From_Mail')}>`,
         this.to = user.email,
-        this.from = "alex <alex@mail.io>"
-        this.url = url,
-        this.firstname = user.name.split(' ')[0]
+        this.firstname = user.name.split(' ')[0],
+        this.url = url
     }
 
     newTransport() {
         return nodemailer.createTransport({
-            host: config.get('EmailHost'),
-            port: config.get('EmailPort'),
+            host: config.get('Email_Host'),
+            port: config.get('Email_Port'),
             auth: {
-                user: config.get('EmailUser'),
-                pass: config.get('EmailPass')
+                user: config.get('Email_User'),
+                pass: config.get('Email_Pass')
             }
         })
     }
@@ -34,14 +34,14 @@ module.exports = class Email {
             to: this.to,
             subject,
             html,
-            text: htmlToText.fromString(html)
+            text: htmlToText(html)
         }
 
         await this.newTransport().sendMail(mailOptions)
     }
 
     async sendWelcome() {
-        await this.send('welcome', 'Welcome, you just signed up to the best footware store. Discover the best kicks at Footville')
+        await this.send('welcome', 'Welcome. Discover the best kicks at Footville')
     }
 
     async sendPasswordReset() {

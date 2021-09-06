@@ -35,8 +35,8 @@ const createToken = (user, statusCode, res) => {
 const signup = catchAsync(async (req, res) => {
     const newUser = await User.create(req.body)
 
-    // const url = `${req.protocol}://${req.get('host')}/me`
-    // await new Email(newUser, url).sendWelcome()
+    const welcomeUrl = `${req.protocol}://${req.get('host')}/me`
+    await new Email(newUser, welcomeUrl).sendWelcome()
 
     createToken(newUser, 201, res)
 })

@@ -1,9 +1,9 @@
 extends baseEmail
 
 block content
-  p Hi #{firstName},
-  p Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: #{url}.
-  p (Website for this action not yet implememnted.)
+  p Hi #{firstname},
+  p (// Forgot your password? Submit a PATCH request with your new password to: #{url})
+  p (// Webpage for this action not yet implememnted.)
   table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
     tbody
       tr
@@ -13,4 +13,4 @@ block content
               tr
                 td
                   a(href=`${url}`, target='_blank') Reset your password
-  p If you didn't forget your password, please ignore this email!
+  p If you did not initiate this action, please ignore this email!
