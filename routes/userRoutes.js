@@ -1,9 +1,9 @@
-const express = require('express')
+const { Router } = require('express')
 const { requireAuth, restrictTo } = require('../middleware/authMiddleware')
 const { signup, login, logout, changePassword, forgotPassword, resetPassword } = require('../controllers/authController')
 const { getMe, getAllUsers, getUser, updateMe, updateUser, deleteMe, deleteUser } = require('../controllers/userController')
 
-const router = express.Router()
+const router = Router()
 
 router.post('/signup', signup)
 
@@ -25,7 +25,7 @@ router.get('/:id', requireAuth, restrictTo('admin'), getUser)
 
 router.patch('/updateMe', requireAuth, updateMe)
 
-router.delete('/deleteMe', requireAuth, deleteMe)
+router.patch('/deleteMe', requireAuth, deleteMe)
 
 router.patch('/:id', requireAuth, restrictTo('admin'), updateUser)
 

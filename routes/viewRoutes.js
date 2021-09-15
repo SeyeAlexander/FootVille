@@ -1,9 +1,9 @@
-const express = require('express')
+const { Router } = require('express')
 const { requireAuth, restrictTo } = require('../middleware/authMiddleware')
 const { getHome, getLogin, getSignup, deleteData } = require('../controllers/viewController')
 const { getAllStock, getAllStocksWomen, getStock } = require('../controllers/stockController')
 
-const router = express.Router()
+const router = Router()
 
 router.get('/', getHome)
 

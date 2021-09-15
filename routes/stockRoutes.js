@@ -1,11 +1,11 @@
-const express = require('express')
+const { Router } = require('express')
 const { requireAuth, restrictTo } = require('../middleware/authMiddleware')
 const { 
   uploadStockImage, createStock, getAllStock,
   getStock, updateStock, deleteStock
 } = require('../controllers/stockController')
 
-const router = express.Router()
+const router = Router()
 
 router.get('/', getAllStock)
 

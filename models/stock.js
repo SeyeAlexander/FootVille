@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-const slugify = require('slugify')
-const validator = require('validator')
 const Schema = mongoose.Schema
+const validator = require('validator')
+const slugify = require('slugify')
 
 const stockSchema = new Schema(
   {
