@@ -20,17 +20,21 @@ const cartSchema = new Schema({
     ref: 'user',
     required: [true, 'cart must opened by a user']
   }
+},
+
+{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
 })
 
-cartSchema.methods.inCart = async function(Stock, id) {
+
+cartSchema.methods.indexInCart = async function(Stock, id) {
   const stock = await Stock.findById(id)
-
-  const exists = this.cartItems.findIndex(itemsInCart => itemsInCart.item === stock.id )
-  if (exists >= 0) return exists
+  const index = this.cartItems.findIndex(
+    itemsInCart => new String(itemsInCart.item).trim() === new String(stock.id).trim()
+  )
+  return index
 }
-
-
-
 
 const Cart = mongoose.model('cart', cartSchema)
 module.exports = Cart
