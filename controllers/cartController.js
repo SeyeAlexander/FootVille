@@ -50,14 +50,14 @@ const addToCart = catchAsync(async (req, res, next) => {
 
 const removeFromCart = catchAsync(async (req, res, next) => {
   const cart = await Cart.findOne({ user: req.user.id })
-
-  const exists = await cart.inCart(Stock, req.params.stockId)
-  if (!exists) return next()
+  const indexInCart = await cart.indexInCart(Stock, req.params.stockId)
 
   // get a way to reflect price change
-  const indexInCart = await cart.indexInCart(Stock, req.params.stockId)
-  cart.cartItems.splice(indexInCart, 1)
+  const stock = await Stock.findById(req.params.stockId)
+  const removedTotal = stock.discount * cart.cartItems[indexInCart].qty
+  cart.priceTotal -= removedTotal
 
+  if (cart.priceTotal) cart.cartItems.splice(indexInCart, 1)
   const myCart = await cart.save()
 
   res.status(200).json({
@@ -82,6 +82,16 @@ const getMyCart = catchAsync(async (req, res, next) => {
   })
 })
 
+const emptyMyCart = catchAsync(async (req, res, next) => {
+  const myCart = await Cart.findOne({ user: req.user.id })
+  await Cart.findByIdAndDelete(myCart.id)
+
+  res.status(204).json({
+    status: 'your cart is cleared',
+    data: null
+  })
+})
+
 const getAllCarts = factory.getAllDocs(Cart)
 
-module.exports = { addToCart, removeFromCart, getMyCart, getAllCarts }
+module.exports = { addToCart, removeFromCart, getMyCart, emptyMyCart, getAllCarts }
