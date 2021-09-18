@@ -30,10 +30,10 @@ const cartSchema = new Schema({
 
 cartSchema.methods.indexInCart = async function(Stock, id) {
   const stock = await Stock.findById(id)
-  const index = this.cartItems.findIndex(
+  const indexInCart = this.cartItems.findIndex(
     itemsInCart => new String(itemsInCart.item).trim() === new String(stock.id).trim()
   )
-  return index
+  return indexInCart
 }
 
 const Cart = mongoose.model('cart', cartSchema)

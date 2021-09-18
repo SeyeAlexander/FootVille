@@ -19,7 +19,7 @@ const stockSchema = new Schema(
     },
 
     discount: {
-      type: Number,
+      type: Number, 
       validate: {
         validator: function(val) {
           return val < this.price
