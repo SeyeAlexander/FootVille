@@ -5,8 +5,7 @@ const catchAsync = require('../utils/catchAsync')
 const AppError = require('../utils/appError')
 
 const setQty = async(req, res, next) => {
-  if (Object.keys(req.body).length === 0) qty = 1
-  else qty = req.body.cartItems[0].qty
+  if (!req.body.cartItems[0].qty) req.body.cartItems[0].qty = 1
   next()
 }
 
@@ -18,8 +17,8 @@ const addToCart = catchAsync(async (req, res, next) => {
 
   if (!cart) {
     const cartData = {
-      cartItems: [{ item: req.params.stockId, qty: qty }],
-      priceTotal: stock.discount * qty,
+      cartItems: [{ item: req.params.stockId, sizePick: req.body.cartItems[0].sizePick, qty: req.body.cartItems[0].qty }],
+      priceTotal: stock.discount * req.body.cartItems[0].qty,
       user: req.user.id
     }
 
@@ -33,16 +32,16 @@ const addToCart = catchAsync(async (req, res, next) => {
   }
 
   if (cart) {
-    const indexInCart = await cart.indexInCart(Stock, req.params.stockId)
+    const indexInCart = await cart.indexInCart(Stock, req.params.stockId, req.body.cartItems[0].sizePick)
 
     if (indexInCart >= 0) {
-      cart.cartItems[indexInCart].qty += qty
+      cart.cartItems[indexInCart].qty += req.body.cartItems[0].qty
     } else {
-      cart.cartItems.push({ item: req.params.stockId, qty: qty })
+      cart.cartItems.push({ item: req.params.stockId, sizePick: req.body.cartItems[0].sizePick, qty: req.body.cartItems[0].qty })
     }
 
     if (!cart.pricetotal) cart.pricetotal = 0
-    cart.priceTotal += stock.discount * qty
+    cart.priceTotal += stock.discount * req.body.cartItems[0].qty
 
     const myCart = await cart.save()
 
@@ -77,7 +76,7 @@ const removeInCart = catchAsync(async (req, res, next) => {
     `You haven't added any product to your cart yet, find out kicks you like and start shopping 😁`, 404
   ))
 
-  const indexInCart = await cart.indexInCart(Stock, req.params.stockId)
+  const indexInCart = await cart.indexInCart(Stock, req.params.stockId, req.params.sizePick)
 
   if (indexInCart >= 0) {
     cart.cartItems[indexInCart].qty -= 1
@@ -88,7 +87,7 @@ const removeInCart = catchAsync(async (req, res, next) => {
     cart.priceTotal -= removedTotal
     const cartState = await cart.save()
 
-    const indexNow = await cartState.indexInCart(Stock, req.params.stockId)
+    const indexNow = await cart.indexInCart(Stock, req.params.stockId, req.params.sizePick)
     const quantity = cartState.cartItems[indexNow].qty
 
     if (quantity <= 0) {
@@ -116,7 +115,7 @@ const removeInCart = catchAsync(async (req, res, next) => {
 
 const removeFromCart = catchAsync(async (req, res, next) => {
   const cart = await Cart.findOne({ user: req.user.id })
-  const indexInCart = await cart.indexInCart(Stock, req.params.stockId)
+  const indexInCart = await cart.indexInCart(Stock, req.params.stockId, req.params.sizePick)
 
   // get a way to reflect price change
   const stock = await Stock.findById(req.params.stockId)

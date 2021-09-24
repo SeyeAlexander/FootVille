@@ -10,9 +10,9 @@ router.get('/myCart', requireAuth, restrictTo('user'), getMyCart)
 
 router.get('/', requireAuth, restrictTo('admin'), getAllCarts)
 
-router.post('/myCart/:stockId/reduce-quantity', requireAuth, restrictTo('user'), removeInCart)
+router.post('/myCart/:stockId/:sizePick/reduce-quantity', requireAuth, restrictTo('user'), removeInCart)
 
-router.post('/myCart/:stockId/remove-item', requireAuth, restrictTo('user'), removeFromCart)
+router.post('/myCart/:stockId/:sizePick/remove-item', requireAuth, restrictTo('user'), removeFromCart)
 
 router.delete('/myCart', requireAuth, restrictTo('user'), emptyMyCart)
 

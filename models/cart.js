@@ -9,6 +9,8 @@ const cartSchema = new Schema({
         ref: 'stock',
         required: [true, 'cart must contain an item']
       },
+      sizePick: Number,
+      itemSlug: String,
       qty: Number
     }
   ],
@@ -27,11 +29,17 @@ const cartSchema = new Schema({
   toObject: { virtuals: true }
 })
 
+cartSchema.pre('save', function(next) {
+  this.cartItems.forEach(itemInCart => {
+    itemInCart.itemSlug = new String(itemInCart.item).trim() + new String(itemInCart.sizePick).trim()
+  })
+  next()
+})
 
-cartSchema.methods.indexInCart = async function(Stock, id) {
+cartSchema.methods.indexInCart = async function(Stock, id, size) {
   const stock = await Stock.findById(id)
   const indexInCart = this.cartItems.findIndex(
-    itemsInCart => new String(itemsInCart.item).trim() === new String(stock.id).trim()
+    itemsInCart => itemsInCart.itemSlug === new String(stock.id).trim() + new String(size).trim()
   )
   return indexInCart
 }
