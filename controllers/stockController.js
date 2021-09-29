@@ -35,7 +35,7 @@ const getAllStock = factory.getAllDocs(Stock, 'shop')
 
 const getAllStocksWomen = factory.getAllDocs(Stock, 'women')
 
-const getStock = factory.getDoc(Stock, 'product')
+const getStock = factory.getDoc(Stock, 'product', { path: 'reviews' })
 
 const updateStock = factory.updateDoc(Stock)
 

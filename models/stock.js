@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 const validator = require('validator')
 const slugify = require('slugify')
 
-const stockSchema = new Schema(
+const stockSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -50,11 +49,6 @@ const stockSchema = new Schema(
       }
     ],
 
-    available: {
-      type: Boolean,
-      default: true
-    },
-
     gender: {
       type: String,
       required: [true, 'gender must be specified'],
@@ -68,6 +62,24 @@ const stockSchema = new Schema(
       required: [true, 'a stock must have a picture']
     },
 
+    ratingsQty: {
+      type: Number,
+      default: 0
+    },
+
+    aveRatings: {
+      type: Number,
+      min: 1,
+      max: 5,
+      default: 4.5,
+      set: val => Math.round(val * 10) / 10
+    },
+
+    available: {
+      type: Boolean,
+      default: true
+    },
+
     createdAt: {
       type: Date,
       default: Date.now()
@@ -78,6 +90,12 @@ const stockSchema = new Schema(
     toObject: { virtuals: true }
   }
 )
+
+stockSchema.virtual('reviews', {
+  ref: 'review',
+  foreignField: 'stock',
+  localField: '_id'
+})
 
 stockSchema.index({ discount: 1 })
 stockSchema.index({ slug: 1 })

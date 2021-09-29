@@ -5,7 +5,11 @@ const {
   getStock, updateStock, deleteStock
 } = require('../controllers/stockController')
 
+const reviewRouter = require('./reviewRoutes') 
+
 const router = Router()
+
+router.use('/:stockId/reviews', reviewRouter)
 
 router.get('/', getAllStock)
 

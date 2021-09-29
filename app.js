@@ -12,6 +12,7 @@ const compression = require('compression')
 const userRouter = require('./routes/userRoutes')
 const stockRouter = require('./routes/stockRoutes')
 const cartRouter = require('./routes/cartRoutes')
+const reviewRouter = require('./routes/reviewRoutes')
 const viewRouter = require('./routes/viewRoutes')
 
 const AppError = require('./utils/appError')
@@ -58,6 +59,7 @@ app.use('/', viewRouter)
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/stocks', stockRouter)
 app.use('/api/v1/cart', cartRouter)
+app.use('/api/v1/reviews', reviewRouter)
 
 app.use((req, res, next) => {
     next(new AppError(`cannot find ${ req.originalUrl } on this server`, 404))

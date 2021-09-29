@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
 
-const cartSchema = new Schema({
+const cartSchema = new mongoose.Schema({
   cartItems: [
     {
       item: {
-        type: Schema.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'stock',
         required: [true, 'cart must contain an item']
       },
@@ -18,12 +17,11 @@ const cartSchema = new Schema({
   priceTotal: Number,
 
   user: {
-    type: Schema.ObjectId,
+    type: mongoose.Schema.ObjectId,
     ref: 'user',
     required: [true, 'cart must opened by a user']
   }
 },
-
 {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }
