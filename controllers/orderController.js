@@ -4,14 +4,6 @@ const AppError = require('../utils/appError')
 const filterObj = require('../utils/filterObj')
 const factory = require('./factory')
 
-// const filterObj = (obj, ...allowedFields) => {
-//   const newObj = {}
-//   Object.keys(obj).forEach(el => {
-//     if (allowedFields.includes(el)) newObj[el] = obj[el]
-//   })
-//   return newObj
-// }
-
 // upon stripe completion, update order model with present payment status
 const getCheckoutSession = catchAsync(async (req, res, next) => {
 
