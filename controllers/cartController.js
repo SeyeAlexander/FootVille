@@ -1,8 +1,8 @@
 const Cart = require('../models/cart')
 const Stock = require('../models/stock')
-const factory = require('./factory')
 const catchAsync = require('../utils/catchAsync')
 const AppError = require('../utils/appError')
+const factory = require('./factory')
 
 const setQty = async(req, res, next) => {
   if (!req.body.cartItems[0].qty) req.body.cartItems[0].qty = 1
@@ -55,7 +55,7 @@ const addToCart = catchAsync(async (req, res, next) => {
 const getMyCart = catchAsync(async (req, res, next) => {
   const myCart = await Cart.findOne({ user: req.user.id }).populate({
     path: 'cartItems.item',
-    select: 'name price discount maker photo'
+    select: 'name discount maker sizes photo'
   })
 
   if (!myCart) return next(new AppError(
@@ -64,6 +64,7 @@ const getMyCart = catchAsync(async (req, res, next) => {
 
   res.status(201).json({
     status: 'success',
+    results: myCart.cartItems.length,
     data: { myCart }
   })
 })

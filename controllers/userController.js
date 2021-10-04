@@ -1,17 +1,10 @@
 const User = require('../models/user')
 const catchAsync = require('../utils/catchAsync')
 const AppError = require('../utils/appError')
+const filterObj = require('../utils/filterObj')
 const factory = require('./factory')
 
 // Find how users can choose avatars from already uploaded files (pictures)
-
-const filterObj = (obj, ...allowedFields) => {
-    const newObj = {}
-    Object.keys(obj).forEach(el => {
-        if(allowedFields.includes(el)) newObj[el] = obj[el]
-    })
-    return newObj
-}
 
 const getMe = (req, res, next) => {
     req.params.id = req.user.id

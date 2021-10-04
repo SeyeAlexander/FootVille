@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema({
     // For avatar, set default, check on how to set different options as avatars also
     // avatar: {
     //     type: String,
+    //     default: 'image url from the web'
     // },
 
     // rank: {

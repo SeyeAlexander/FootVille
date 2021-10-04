@@ -20,6 +20,11 @@ const cartSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'user',
     required: [true, 'cart must opened by a user']
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now()
   }
 },
 {

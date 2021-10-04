@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
 const orderSchema = new mongoose.Schema({
-  stock: {
+  cart: {
     type: mongoose.Schema.ObjectId,
-    ref: 'stock',
-    required: [true, 'order must contain an item']
+    ref: 'cart',
+    required: [true, 'order must be made on checking out cart']
   },
 
   user: {
@@ -13,9 +13,23 @@ const orderSchema = new mongoose.Schema({
     required: [true, 'order must be made by a user']
   },
 
-  paid: {
-    type: Boolean,
-    default: true
+  paymentStatus: {
+    type: String,
+    enum: ['pending', 'successful', 'failed', 'refund'],
+    required: true
+  },
+
+  orderStatus:{
+    status: {
+      type: String,
+      enum: ['ordered', 'shipped', 'delivered', 'cancelled'],
+      default: 'ordered'
+    },
+    
+    timeProcessed: {
+      type: Date,
+      default: Date.now()
+    }
   },
 
   createdAt: {
@@ -26,6 +40,14 @@ const orderSchema = new mongoose.Schema({
 {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }
+})
+
+orderSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'user',
+    select: 'username email shippingAddress postalCode'
+  })
+  next()
 })
 
 const Order = mongoose.model('order', orderSchema)
