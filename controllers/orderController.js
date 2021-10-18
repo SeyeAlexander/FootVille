@@ -52,7 +52,7 @@ const getMyOrders = catchAsync(async (req, res, next) => {
     }
   })
 
-  if (orders.length == 0) return next(new AppError('oops, you have not made any orders yet', 404))
+  // if (orders.length == 0) return next(new AppError('oops, you have not made any orders yet', 404))
 
   res.status(200).json({
     status: 'success',
@@ -75,6 +75,6 @@ const deleteOrder = catchAsync(async (req, res, next) => {
 })
 
 module.exports = {
-  createOrder, getCheckoutSession, createUserOrder, 
+  createOrder, getCheckoutSession, createUserOrder,
   getAllOrders, getOrder, treatOrder, getMyOrders, deleteOrder
 }

@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
         validate: [validator.isEmail, 'please enter a valid email']
     },
 
+    avatar: {
+        type: String,
+        default: 'default.jpg'
+    },
+
     shippingAddress: {
         type: String,
         required: [true, 'Please provide us your shipping address']
@@ -32,12 +37,6 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Please provide us your postal code']
     },
-
-    // For avatar, set default, check on how to set different options as avatars also
-    // avatar: {
-    //     type: String,
-    //     default: 'image url from the web'
-    // },
 
     // rank: {
     //     type: String,
